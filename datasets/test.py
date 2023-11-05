@@ -62,7 +62,7 @@ def inspect_multiview_labels(labels):
     print(labels.max())
     print(labels.min())
 
-a = scipy.io.loadmat('../data/animals.mat')
+a = scipy.io.loadmat('../data/Cora.mat')
 X = a['X'][0]
 Y = a['Y']
 

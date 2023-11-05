@@ -26,7 +26,8 @@ def load_mat(mat_path, topk=10, train_ratio=0.1):
     print('='*15,'Load data ',os.path.basename(mat_path),'='*15)
     mat = io.loadmat(mat_path)
     X = mat['X'][0] #[n_view,n_nodes,n_feature]
-    Y = mat['Y'][:,0]-1 #[n_nodes]
+    Y = mat['Y'][:, 0] - np.min(mat['Y'])  # [n_nodes]
+
 
     labels = Y
     n_class = len(np.unique(labels))
