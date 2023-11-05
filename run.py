@@ -172,6 +172,8 @@ if __name__ == '__main__':
         # 'config/MNIST.yaml', #完成
         # 'config/NGs.yaml',
          'config/Wikipedia.yaml',
+        # 'config/animals.yaml',
+        # 'config/NoisyMNIST-30000.yaml'
     ]
     #打印
     for conf in config_list:
