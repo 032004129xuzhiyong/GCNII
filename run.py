@@ -168,12 +168,12 @@ if __name__ == '__main__':
         # 'config/BBCnews.yaml', #完成
         # 'config/BBCSports.yaml', #完成
         # 'config/citeseer.yaml', #完成
-        # 'config/Cora.yaml',
+        # 'config/Cora.yaml', #完成
         # 'config/MNIST.yaml', #完成
-        # 'config/NGs.yaml',
-         'config/Wikipedia.yaml',
-        # 'config/animals.yaml',
-        # 'config/NoisyMNIST-30000.yaml'
+        # 'config/NGs.yaml', #完成
+        # 'config/Wikipedia.yaml', #完成
+        # 'config/animals.yaml', #数据集太大
+        # 'config/NoisyMNIST-30000.yaml' #数据集太大
     ]
     #打印
     for conf in config_list:
