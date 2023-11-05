@@ -98,15 +98,10 @@ def train_with_besthp_and_save_config_and_history(best_conf):
     for tri_idx in range(best_conf['best_trial']):
         tri_logs = train_one_args(best_conf)
         df = pd.DataFrame(tri_logs)
-        #png
-        fig = mplot.plot_LossMetricTimeLr_with_df(df)
-        fig.savefig(os.path.join(best_dataset_dir,'df' + str(tri_idx) + '.png'))
-        plt.close() #关闭figure
-        del fig
         #csv
         df_save_path = os.path.join(best_dataset_dir, 'df' + str(tri_idx) + '.csv')
         df.to_csv(df_save_path, index=False, header=True)
-    mean_acc, std_acc = compute_mean_val_acc_in_bestdir_for_one_dataset(best_dataset_dir)
+    mean_acc, std_acc = compute_mean_val_acc_in_bestdir_for_one_dataset(best_dataset_dir,True)
 
     best_conf.update({
         'acc_mean': float(mean_acc),
@@ -115,7 +110,7 @@ def train_with_besthp_and_save_config_and_history(best_conf):
     save_conf_path = os.path.join(best_dataset_dir, 'conf.yaml')
     tool.save_yaml_args(save_conf_path, best_conf)
 
-def compute_mean_val_acc_in_bestdir_for_one_dataset(one_dataset_dir):
+def compute_mean_val_acc_in_bestdir_for_one_dataset(one_dataset_dir, if_plot_fig=False):
     """
     计算一个数据集多次实验的平均acc 和 std
     :param one_dataset_dir: 包含csv过程数据的目录
@@ -129,6 +124,12 @@ def compute_mean_val_acc_in_bestdir_for_one_dataset(one_dataset_dir):
     val_metric_list = []
     for fp in filepaths:
         df = pd.read_csv(fp)
+        # png
+        if if_plot_fig:
+            fig = mplot.plot_LossMetricTimeLr_with_df(df)
+            fig.savefig(os.path.join(one_dataset_dir, tool.get_basename_split_ext(fp) + '.png'))
+            plt.close()  # 关闭figure
+            del fig
         val_acc = df['val_metric_acc'].to_numpy().max()
         del df
         val_metric_list.append(val_acc)
@@ -162,16 +163,14 @@ class MyTuner(mtorch.MyTuner):
 if __name__ == '__main__':
     torch.cuda.empty_cache()
     config_list = [
-        # 'config/ALOI.yaml',
-        # 'config/3sources.yaml',
-        # 'config/animals.yaml', #待测试
-        # 'config/BBCnews.yaml',
-        # 'config/BBCSports.yaml',
-        # 'config/citeseer.yaml',
+        # 'config/ALOI.yaml', #完成
+        # 'config/3sources.yaml', #完成
+        # 'config/BBCnews.yaml', #完成
+        # 'config/BBCSports.yaml', #完成
+        # 'config/citeseer.yaml', #完成
          'config/Cora.yaml',
-        # 'config/MNIST.yaml',
+        # 'config/MNIST.yaml', #完成
         # 'config/NGs.yaml',
-        # 'config/NoisyMNIST-30000.yaml',
         # 'config/Wikipedia.yaml',
     ]
     #打印
@@ -209,4 +208,6 @@ if __name__ == '__main__':
         train_with_besthp_and_save_config_and_history(best_args)
         torch.cuda.empty_cache()
     print(compute_mean_val_acc_in_bestdir_for_all_dataset('best'))
+    
+    #print(compute_mean_val_acc_in_bestdir_for_one_dataset('best/MNIST',True))
 
