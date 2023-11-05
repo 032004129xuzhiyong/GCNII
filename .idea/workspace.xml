@@ -5,55 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="182fff83-b3c2-48f6-8c1d-da66fec71036" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/download.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180823526828.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180824307986.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180824357987.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180824407990.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180824468071.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180824518071.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180828067091.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180828117093.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180833386784.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180833807938.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180833899081.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180835658172.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180837265908.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180837375911.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180837479359.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180837619362.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180839187065.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180839277920.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180839367321.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180840544034.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180840635144.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180843526798.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180843686811.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180843846793.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180844229148.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180846915977.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180847073975.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180849168386.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180849314576.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180849474029.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180849751864.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180854843947.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180854955047.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180855075047.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180855205046.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180855335050.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180855475120.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180855595121.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180855725122.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180905018226.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180908832648.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180910717410.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180910953624.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180911053622.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_180911253625.pth" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mytool" beforeDir="false" afterPath="$PROJECT_DIR$/mytool" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables/Wikipedia.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tables/Wikipedia.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
