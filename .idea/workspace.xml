@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="182fff83-b3c2-48f6-8c1d-da66fec71036" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasets/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasets/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasets/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/Wikipedia.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/Wikipedia.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mytool" beforeDir="false" afterPath="$PROJECT_DIR$/mytool" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +38,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../MyToolKit" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.run">
     <configuration name="run" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GCNII" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -87,8 +83,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test" />
         <item itemvalue="Python.run" />
+        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
