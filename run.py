@@ -17,7 +17,7 @@ import copy
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-
+import argparse
 
 def bind_boolind_for_fn(func, train_bool_ind, val_bool_ind):
     def binded_func(scores, labels):
@@ -161,30 +161,53 @@ class MyTuner(mtorch.MyTuner):
 
 
 if __name__ == '__main__':
-    torch.cuda.empty_cache()
-    config_list = [
-        # 'config/ALOI.yaml', #完成
-        # 'config/3sources.yaml', #完成
-        # 'config/BBCnews.yaml', #完成
-        # 'config/BBCSports.yaml', #完成
-        # 'config/citeseer.yaml', #完成
-        # 'config/Cora.yaml', #完成
-        # 'config/MNIST.yaml', #完成
-        # 'config/NGs.yaml', #完成
-        # 'config/Wikipedia.yaml', #完成
-        # 'config/animals.yaml', #数据集太大
-        # 'config/NoisyMNIST-30000.yaml' #数据集太大
-    ]
-    #打印
-    for conf in config_list:
-        print(conf,end=' ')
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--config', '-c',
+                        default=['config/3sources.yaml'],
+                        nargs='+',
+                        required=True,
+                        help='yaml config file path.')
+    parser.add_argument('--max-trials',
+                        default=250,
+                        type=int,
+                        help='最大实验次数',
+                        dest='max_trials')
+    parser.add_argument('--executions-per-trial',
+                        default=5,
+                        type=int,
+                        help='每次实验(每个配置)执行几遍，减少误差',
+                        dest='executions_per_trial')
+    parser.add_argument('--best-trial',
+                        default=20,
+                        type=int,
+                        help='获得最优超参数后，使用超参数执行几次来获得实验数据',
+                        dest='best_trial')
+    parser.add_argument('--best-trial-save-dir',
+                        default='best/',
+                        type=str,
+                        help='最优超参数实验数据存储目录',
+                        dest='best_trial_save_dir')
+    parser.add_argument('--device',
+                        default='cuda',
+                        type=str,
+                        help='torch device')
+    parser.add_argument('--epochs',
+                        default=1500,
+                        type=int,
+                        help='epochs per training')
+
+    parser_args = vars(parser.parse_args())
+    # print(parser_args)
+    for conf in parser_args['config']:
+        print(conf, end=' ')
     print('will train!')
 
-    for conf in config_list:
+    for conf in parser_args['config']:
         args = tool.load_yaml_args(conf)
         args['dfcallback_args']['df_save_path'] = os.path.join('./tables/', tool.get_basename_split_ext(conf) + '.csv')
-        args['tbwriter_args']['log_dir'] = os.path.join('./logs/',tool.get_basename_split_ext(conf))
-        args['earlystop_args']['checkpoint_dir'] = os.path.join('./checkpoint/',tool.get_basename_split_ext(conf))
+        args['tbwriter_args']['log_dir'] = os.path.join('./logs/', tool.get_basename_split_ext(conf))
+        args['earlystop_args']['checkpoint_dir'] = os.path.join('./checkpoint/', tool.get_basename_split_ext(conf))
+        args.update(parser_args)
         origin_args = copy.deepcopy(args)
 
         # tuner
@@ -194,22 +217,21 @@ if __name__ == '__main__':
             mode='max',
         )
         tuner.search(args=args)
-        torch.cuda.empty_cache()
 
         # 获得最优config
         best_hp = tuner.get_best_hyperparameters()[0]
-        #打印
+        # 打印
         for i in range(5):
             print('*' * 50)
-        tool.print_dicts_tablefmt([best_hp],['Best HyperParameters!!'])
+        tool.print_dicts_tablefmt([best_hp], ['Best HyperParameters!!'])
         for i in range(5):
             print('*' * 50)
         best_args = tool.modify_dict_with_hp(origin_args, best_hp, False)
 
         # 用最优参数训练，评估平均准确率，并保存实验过程数据和最优配置在 ./best目录下
         train_with_besthp_and_save_config_and_history(best_args)
-        torch.cuda.empty_cache()
+
     print(compute_mean_val_acc_in_bestdir_for_all_dataset('best'))
-    
-    #print(compute_mean_val_acc_in_bestdir_for_one_dataset('best/MNIST',True))
+
+    #print(compute_mean_val_acc_in_bestdir_for_one_dataset('best/NGs',True))
 
