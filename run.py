@@ -194,6 +194,33 @@ if __name__ == '__main__':
                         default=1500,
                         type=int,
                         help='epochs per training')
+    ###
+    parser.add_argument('--topk',
+                        default=10,
+                        type=int,
+                        help='knn topk')
+    parser.add_argument('--train-ratio',
+                        default=0.05,
+                        type=float,
+                        help='train val split',
+                        dest='train_ratio')
+    parser.add_argument('--layerclass',
+                        default='GCNIILayer',
+                        type=str,
+                        help='GCNII layer class, all layer classes: GCNIILayer/GCNII_star_Layer')
+    parser.add_argument('--save-best-only', '-sbo',
+                        action='store_true',
+                        default=False,
+                        help='earlystop args if save best only',
+                        dest='save_best_only')
+    parser.add_argument('--monitor',
+                        default='val_metric_acc',
+                        type=str,
+                        help='earlystop args monitor metrics. e.g. loss/val_loss/metric_acc/val_metric_acc')
+    parser.add_argument('--patience',
+                        default=100,
+                        type=int,
+                        help='earlystop args patience')
 
     parser_args = vars(parser.parse_args())
     # print(parser_args)
@@ -203,10 +230,24 @@ if __name__ == '__main__':
 
     for conf in parser_args['config']:
         args = tool.load_yaml_args(conf)
+        #修改保存路径
         args['dfcallback_args']['df_save_path'] = os.path.join('./tables/', tool.get_basename_split_ext(conf) + '.csv')
         args['tbwriter_args']['log_dir'] = os.path.join('./logs/', tool.get_basename_split_ext(conf))
         args['earlystop_args']['checkpoint_dir'] = os.path.join('./checkpoint/', tool.get_basename_split_ext(conf))
-        args.update(parser_args)
+
+        #config yaml 第一层级
+        first_deep_dict = {key:parser_args[key] for key in parser_args.keys()
+                           if key in ['max_trials','executions_per_trial',
+                            'best_trial','best_trial_save_dir','device','epochs']}
+        args.update(first_deep_dict)
+        #config yaml 第二层级
+        args['dataset_args']['topk'] = parser_args['topk']
+        args['dataset_args']['train_ratio'] = parser_args['train_ratio']
+        args['model_args']['layerclass'] = parser_args['layerclass']
+        args['earlystop_args']['save_best_only'] = parser_args['save_best_only']
+        args['earlystop_args']['monitor'] = parser_args['monitor']
+        args['earlystop_args']['patience'] = parser_args['patience']
+
         origin_args = copy.deepcopy(args)
 
         # tuner
