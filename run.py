@@ -163,10 +163,9 @@ class MyTuner(mtorch.MyTuner):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', '-c',
-                        default=['config/3sources.yaml'],
                         nargs='+',
                         required=True,
-                        help='yaml config file path.')
+                        help='yaml config file path. e.g. config/3sources.yaml')
     parser.add_argument('--max-trials',
                         default=250,
                         type=int,
