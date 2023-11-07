@@ -1,4 +1,4 @@
-best_trial: 1
+best_trial: 20
 best_trial_save_dir: temp_result/
 dataset_args:
   mat_path: data/3sources.mat
@@ -18,24 +18,24 @@ executions_per_trial: 5
 loss_weights: None
 max_trials: 250
 metric_acc:
-  mean: 0.64375
-  std: 0.0
+  mean: 0.6049572965
+  std: 0.08734271898260453
 metric_f1:
-  mean: 0.64375
-  std: 0.0
+  mean: 0.604957298136646
+  std: 0.08734272090533796
 metric_precision:
-  mean: 0.64375
-  std: 0.0
+  mean: 0.604957298136646
+  std: 0.08734272090533796
 metric_recall:
-  mean: 0.64375
-  std: 0.0
+  mean: 0.604957298136646
+  std: 0.08734272090533796
 model_args:
   alpha: 0.1
   dropout: 0.5
-  hid_dim: 64
+  hid_dim: 40
   lamda: 0.5
   layerclass: GCNIILayer
-  nlayer: 3
+  nlayer: 2
 model_class_args:
   class_name: GCNII_model
   module_path: models.model
@@ -47,16 +47,16 @@ optimizer_class_args:
 tbwriter_args:
   log_dir: ./logs/3sources
 val_metric_acc:
-  mean: 0.775
-  std: 0.0
+  mean: 0.683247282
+  std: 0.09124414754725263
 val_metric_f1:
-  mean: 0.775
-  std: 0.0
+  mean: 0.6832472826086957
+  std: 0.09124415013894792
 val_metric_precision:
-  mean: 0.775
-  std: 0.0
+  mean: 0.6832472826086957
+  std: 0.09124415013894789
 val_metric_recall:
-  mean: 0.775
-  std: 0.0
+  mean: 0.6832472826086957
+  std: 0.09124415013894789
 weight_decay1: 0.01
 weight_decay2: 0.0005

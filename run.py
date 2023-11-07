@@ -148,7 +148,7 @@ def compute_mean_metric_in_bestdir_for_one_dataset(one_dataset_dir, if_plot_fig=
     return mean_std_metric_dict
 
 
-def compute_mean_val_acc_in_bestdir_for_all_dataset(best_dir):
+def compute_mean_metric_in_bestdir_for_all_dataset(best_dir):
     """
     计算best目录下所有数据集 mean_acc 和 std_acc
     :param best_dir:
@@ -320,7 +320,7 @@ if __name__ == '__main__':
             train_with_besthp_and_save_config_and_history(best_args)
 
 
-    print(compute_mean_val_acc_in_bestdir_for_all_dataset('best'))
+    print(compute_mean_metric_in_bestdir_for_all_dataset('best'))
 
-    #print(compute_mean_val_acc_in_bestdir_for_one_dataset('best/NGs',True))
+    #print(compute_mean_metric_in_bestdir_for_one_dataset('best/NGs',True))
 
