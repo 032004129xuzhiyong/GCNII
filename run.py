@@ -60,7 +60,11 @@ def train_one_args(args):
     history = mtorch.fit(model, dataload, epochs=args['epochs'],
                          compile_kw={'loss': bind_boolind_for_fn(loss_fn, train_bool, val_bool),
                                      'optimizer': optimizer,
-                                     'metric': bind_boolind_for_fn(mmetric.acc, train_bool, val_bool),
+                                     'metric': [bind_boolind_for_fn(mmetric.acc, train_bool, val_bool),
+                                                bind_boolind_for_fn(mmetric.f1, train_bool, val_bool),
+                                                bind_boolind_for_fn(mmetric.precision,train_bool,val_bool),
+                                                bind_boolind_for_fn(mmetric.recall,train_bool,val_bool)
+                                                ],
                                      # 'scheduler':scheduler,
                                      },
                          device=device,
@@ -101,40 +105,47 @@ def train_with_besthp_and_save_config_and_history(best_conf):
         #csv
         df_save_path = os.path.join(best_dataset_dir, 'df' + str(tri_idx) + '.csv')
         df.to_csv(df_save_path, index=False, header=True)
-    mean_acc, std_acc = compute_mean_val_acc_in_bestdir_for_one_dataset(best_dataset_dir,True)
-
-    best_conf.update({
-        'acc_mean': float(mean_acc),
-        'acc_std': float(std_acc),
-    })
+    #{key1: [mean, std], key2: [mean, std]...}
+    mean_std_metric_dict = compute_mean_metric_in_bestdir_for_one_dataset(best_dataset_dir, if_plot_fig=True)
+    #{key1:{mean:float,std:float}, key2:{mean:float,std:float}...}
+    mean_std_metric_dict = {key: {'mean':mean_std_metric_dict[key][0],'std':mean_std_metric_dict[key][1]}
+                            for key in mean_std_metric_dict.keys()}
+    best_conf.update(mean_std_metric_dict)
     save_conf_path = os.path.join(best_dataset_dir, 'conf.yaml')
     tool.save_yaml_args(save_conf_path, best_conf)
 
-def compute_mean_val_acc_in_bestdir_for_one_dataset(one_dataset_dir, if_plot_fig=False):
+
+def compute_mean_metric_in_bestdir_for_one_dataset(one_dataset_dir, if_plot_fig=False):
     """
-    计算一个数据集多次实验的平均acc 和 std
-    :param one_dataset_dir: 包含csv过程数据的目录
-    :return:
-        (mean, std)
+
+    Args:
+        one_dataset_dir: str
+        if_plot_fig: a plot every df
+
+    Returns:
+        mean_std_metric_dict: Dict {key1:[mean,std],key2:[mean,std]...}
     """
     filenames = os.listdir(one_dataset_dir)
     filenames = [name for name in filenames if name.endswith('csv')]
     filepaths = [os.path.join(one_dataset_dir, name) for name in filenames]
 
-    val_metric_list = []
+    metric_list = mtorch.History() #{key1:[], key2:[]...}
     for fp in filepaths:
         df = pd.read_csv(fp)
+        df_col_names = df.columns
         # png
         if if_plot_fig:
             fig = mplot.plot_LossMetricTimeLr_with_df(df)
             fig.savefig(os.path.join(one_dataset_dir, tool.get_basename_split_ext(fp) + '.png'))
             plt.close()  # 关闭figure
             del fig
-        val_acc = df['val_metric_acc'].to_numpy().max()
-        del df
-        val_metric_list.append(val_acc)
-    val_metric_list = np.array(val_metric_list)
-    return np.mean(val_metric_list), np.std(val_metric_list)
+        metric_dict = df.iloc[:,df_col_names.str.contains('metric')].max(axis=0).to_dict()
+        metric_list.update(metric_dict)
+    metric_list = metric_list.history
+    #{key1:[mean,std],key2:[mean,std]...}
+    mean_std_metric_dict = {key:[float(np.mean(metric_list[key])), float(np.std(metric_list[key]))]
+                            for key in metric_list.keys()}
+    return mean_std_metric_dict
 
 
 def compute_mean_val_acc_in_bestdir_for_all_dataset(best_dir):
@@ -146,7 +157,7 @@ def compute_mean_val_acc_in_bestdir_for_all_dataset(best_dir):
     """
     dataset_names = os.listdir(best_dir)
     dataset_dirs = [os.path.join(best_dir, dn) for dn in dataset_names]
-    dataset_mean_std = [compute_mean_val_acc_in_bestdir_for_one_dataset(ddir) for ddir in dataset_dirs]
+    dataset_mean_std = [compute_mean_metric_in_bestdir_for_one_dataset(ddir) for ddir in dataset_dirs]
     return dict(zip(dataset_names, dataset_mean_std))
 
 
@@ -166,6 +177,7 @@ if __name__ == '__main__':
                         nargs='+',
                         required=True,
                         help='yaml config file path. e.g. config/3sources.yaml')
+    #tuner
     parser.add_argument('--max-trials',
                         default=250,
                         type=int,
@@ -186,15 +198,7 @@ if __name__ == '__main__':
                         type=str,
                         help='最优超参数实验数据存储目录',
                         dest='best_trial_save_dir')
-    parser.add_argument('--device',
-                        default='cuda',
-                        type=str,
-                        help='torch device')
-    parser.add_argument('--epochs',
-                        default=1500,
-                        type=int,
-                        help='epochs per training')
-    ###
+    #dataset
     parser.add_argument('--topk',
                         default=10,
                         type=int,
@@ -204,10 +208,29 @@ if __name__ == '__main__':
                         type=float,
                         help='train val split',
                         dest='train_ratio')
+    #model args
     parser.add_argument('--layerclass',
                         default='GCNIILayer',
                         type=str,
                         help='GCNII layer class, all layer classes: GCNIILayer/GCNII_star_Layer')
+    parser.add_argument('--nlayer',
+                        default=None,
+                        type=int,
+                        help='num layerclass')
+    parser.add_argument('--hid-dim',
+                        default=None,
+                        type=int,
+                        help='hidden dimension',
+                        dest='hid_dim')
+    #training
+    parser.add_argument('--device',
+                        default='cuda',
+                        type=str,
+                        help='torch device')
+    parser.add_argument('--epochs',
+                        default=1500,
+                        type=int,
+                        help='epochs per training')
     parser.add_argument('--save-best-only', '-sbo',
                         action='store_true',
                         default=False,
@@ -221,6 +244,17 @@ if __name__ == '__main__':
                         default=100,
                         type=int,
                         help='earlystop args patience')
+    #others
+    parser.add_argument('--train-times-with-no-tuner',
+                        default=1,
+                        type=int,
+                        help='训练实验次数，没有超参数搜索(默认有超参数搜索)',
+                        dest='tt_nt')
+    parser.add_argument('--train-save-dir-with-no-tuner',
+                        default='temp_result/',
+                        type=str,
+                        help='训练实验数据保存目录，没有超参数搜索(默认有超参数搜索)',
+                        dest='tsd_nt')
 
     parser_args = vars(parser.parse_args())
     # print(parser_args)
@@ -235,6 +269,7 @@ if __name__ == '__main__':
         args['tbwriter_args']['log_dir'] = os.path.join('./logs/', tool.get_basename_split_ext(conf))
         args['earlystop_args']['checkpoint_dir'] = os.path.join('./checkpoint/', tool.get_basename_split_ext(conf))
 
+        #根据parser_args修改conf
         #config yaml 第一层级
         first_deep_dict = {key:parser_args[key] for key in parser_args.keys()
                            if key in ['max_trials','executions_per_trial',
@@ -244,32 +279,46 @@ if __name__ == '__main__':
         args['dataset_args']['topk'] = parser_args['topk']
         args['dataset_args']['train_ratio'] = parser_args['train_ratio']
         args['model_args']['layerclass'] = parser_args['layerclass']
+        args['model_args']['nlayer'] = parser_args['nlayer']  if parser_args['nlayer'] is not None else args['model_args']['nlayer']
+        args['model_args']['hid_dim'] = parser_args['hid_dim'] if parser_args['hid_dim'] is not None else args['model_args']['hid_dim']
         args['earlystop_args']['save_best_only'] = parser_args['save_best_only']
         args['earlystop_args']['monitor'] = parser_args['monitor']
         args['earlystop_args']['patience'] = parser_args['patience']
 
-        origin_args = copy.deepcopy(args)
+        if tool.has_hyperparameter(args):
+            #tuner
+            # for train_with_besthp_and_save_config_and_history
+            origin_args = copy.deepcopy(args)
 
-        # tuner
-        tuner = MyTuner(
-            executions_per_trial=args['executions_per_trial'],
-            max_trials=args['max_trials'],
-            mode='max',
-        )
-        tuner.search(args=args)
+            # tuner
+            tuner = MyTuner(
+                executions_per_trial=args['executions_per_trial'],
+                max_trials=args['max_trials'],
+                mode='max',
+            )
+            tuner.search(args=args)
 
-        # 获得最优config
-        best_hp = tuner.get_best_hyperparameters()[0]
-        # 打印
-        for i in range(5):
-            print('*' * 50)
-        tool.print_dicts_tablefmt([best_hp], ['Best HyperParameters!!'])
-        for i in range(5):
-            print('*' * 50)
-        best_args = tool.modify_dict_with_hp(origin_args, best_hp, False)
+            # 获得最优config
+            best_hp = tuner.get_best_hyperparameters()[0]
+            # 打印
+            for i in range(5):
+                print('*' * 50)
+            tool.print_dicts_tablefmt([best_hp], ['Best HyperParameters!!'])
+            for i in range(5):
+                print('*' * 50)
 
-        # 用最优参数训练，评估平均准确率，并保存实验过程数据和最优配置在 ./best目录下
-        train_with_besthp_and_save_config_and_history(best_args)
+            #用最优参数训练，评估平均准确率，并保存实验过程数据和最优配置在 ./best目录下
+            best_args = tool.modify_dict_with_hp(origin_args, best_hp, False)
+            train_with_besthp_and_save_config_and_history(best_args)
+        else:
+            #only train times
+            #没有超参数搜索
+            best_args = args
+            #修改用于最优参数训练的参数
+            best_args['best_trial'] = parser_args['tt_nt']
+            best_args['best_trial_save_dir'] = parser_args['tsd_nt']
+            train_with_besthp_and_save_config_and_history(best_args)
+
 
     print(compute_mean_val_acc_in_bestdir_for_all_dataset('best'))
 
