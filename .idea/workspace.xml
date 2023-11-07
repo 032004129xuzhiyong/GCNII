@@ -6,17 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="182fff83-b3c2-48f6-8c1d-da66fec71036" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/3sources/20231107_203317897825.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/3sources/20231107_203319026110.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/3sources/20231107_203319056108.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/3sources/20231107_203319119218.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mytool" beforeDir="false" afterPath="$PROJECT_DIR$/mytool" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mytool/metric.py" beforeDir="false" afterPath="$PROJECT_DIR$/mytool/metric.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables/3sources.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tables/3sources.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/conf.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df0.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df0.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df0.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +21,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/mytool" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
