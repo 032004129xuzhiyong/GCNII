@@ -320,7 +320,7 @@ if __name__ == '__main__':
             train_with_besthp_and_save_config_and_history(best_args)
 
 
-    print(compute_mean_metric_in_bestdir_for_all_dataset('best'))
+    print(compute_mean_metric_in_bestdir_for_all_dataset('temp_result'))
 
     #print(compute_mean_metric_in_bestdir_for_one_dataset('best/NGs',True))
 

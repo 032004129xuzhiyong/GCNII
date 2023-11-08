@@ -1,0 +1,62 @@
+best_trial: 20
+best_trial_save_dir: temp_result/
+dataset_args:
+  mat_path: data/MNIST.mat
+  topk: 10
+  train_ratio: 0.05
+device: cuda
+dfcallback_args:
+  df_save_path: ./tables/MNIST.csv
+earlystop_args:
+  checkpoint_dir: ./checkpoint/MNIST
+  monitor: val_metric_acc
+  patience: 100
+  restore_best_weights: true
+  save_best_only: false
+epochs: 1500
+executions_per_trial: 5
+loss_weights: None
+max_trials: 250
+metric_acc:
+  mean: 0.873157889
+  std: 0.011975274522511752
+metric_f1:
+  mean: 0.8564543782523533
+  std: 0.012607680731640447
+metric_precision:
+  mean: 0.8611892575865132
+  std: 0.01230796945397455
+metric_recall:
+  mean: 0.860473236405652
+  std: 0.014684563541051781
+model_args:
+  alpha: 0.1
+  dropout: 0.5
+  hid_dim: 64
+  lamda: 0.5
+  layerclass: GCNIILayer
+  nlayer: 2
+model_class_args:
+  class_name: GCNII_model
+  module_path: models.model
+optimizer_args:
+  lr: 0.01
+optimizer_class_args:
+  class_name: Adam
+  module_path: torch.optim
+tbwriter_args:
+  log_dir: ./logs/MNIST
+val_metric_acc:
+  mean: 0.916078945
+  std: 0.008134048644736215
+val_metric_f1:
+  mean: 0.9036252746280962
+  std: 0.011065774933217655
+val_metric_precision:
+  mean: 0.9097802393585251
+  std: 0.008978831128393022
+val_metric_recall:
+  mean: 0.9042291975397087
+  std: 0.012037496964158928
+weight_decay1: 0.01
+weight_decay2: 0.0005
