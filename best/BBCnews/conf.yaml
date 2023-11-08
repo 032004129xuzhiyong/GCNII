@@ -1,7 +1,5 @@
-acc_mean: 0.899692778
-acc_std: 0.019708210681563552
 best_trial: 20
-best_trial_save_dir: best/
+best_trial_save_dir: temp_result/
 dataset_args:
   mat_path: data/BBCnews.mat
   topk: 10
@@ -19,6 +17,18 @@ epochs: 1500
 executions_per_trial: 5
 loss_weights: None
 max_trials: 250
+metric_acc:
+  mean: 0.8015360945
+  std: 0.030934753101147825
+metric_f1:
+  mean: 0.7877368589760596
+  std: 0.03467166334801642
+metric_precision:
+  mean: 0.8187370863463702
+  std: 0.029855480616084097
+metric_recall:
+  mean: 0.7997899968299087
+  std: 0.025909217823376633
 model_args:
   alpha: 0.1
   dropout: 0.5
@@ -36,5 +46,17 @@ optimizer_class_args:
   module_path: torch.optim
 tbwriter_args:
   log_dir: ./logs/BBCnews
+val_metric_acc:
+  mean: 0.8885560705
+  std: 0.0313095715646111
+val_metric_f1:
+  mean: 0.8811999588259646
+  std: 0.0384014304942293
+val_metric_precision:
+  mean: 0.8971417358901412
+  std: 0.03452454538487688
+val_metric_recall:
+  mean: 0.8934738377555836
+  std: 0.026745001542481245
 weight_decay1: 0.01
 weight_decay2: 0.0005

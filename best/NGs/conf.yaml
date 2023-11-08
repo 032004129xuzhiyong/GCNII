@@ -1,7 +1,5 @@
-acc_mean: 0.8871578845
-acc_std: 0.037621227198377835
 best_trial: 20
-best_trial_save_dir: best/
+best_trial_save_dir: temp_result/
 dataset_args:
   mat_path: data/NGs.mat
   topk: 10
@@ -14,11 +12,23 @@ earlystop_args:
   monitor: val_metric_acc
   patience: 100
   restore_best_weights: true
-  save_best_only: true
+  save_best_only: false
 epochs: 1500
 executions_per_trial: 5
 loss_weights: None
 max_trials: 250
+metric_acc:
+  mean: 0.7574736835
+  std: 0.027950095346402172
+metric_f1:
+  mean: 0.7564161758561289
+  std: 0.03161453500418794
+metric_precision:
+  mean: 0.8032134860831356
+  std: 0.01696305870236988
+metric_recall:
+  mean: 0.758689236025772
+  std: 0.02711871951807782
 model_args:
   alpha: 0.1
   dropout: 0.5
@@ -36,5 +46,17 @@ optimizer_class_args:
   module_path: torch.optim
 tbwriter_args:
   log_dir: ./logs/NGs
+val_metric_acc:
+  mean: 0.8710526295
+  std: 0.03809814003828919
+val_metric_f1:
+  mean: 0.8687186896057957
+  std: 0.04557686279692935
+val_metric_precision:
+  mean: 0.8934845328876777
+  std: 0.02053435856368029
+val_metric_recall:
+  mean: 0.8723033908490232
+  std: 0.036803977495414746
 weight_decay1: 0.01
 weight_decay2: 0.0005

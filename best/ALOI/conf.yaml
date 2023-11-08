@@ -1,7 +1,5 @@
-acc_mean: 0.10277777499999999
-acc_std: 0.007986704111251084
 best_trial: 20
-best_trial_save_dir: best/
+best_trial_save_dir: temp_result/
 dataset_args:
   mat_path: data/ALOI.mat
   topk: 10
@@ -14,11 +12,23 @@ earlystop_args:
   monitor: val_metric_acc
   patience: 100
   restore_best_weights: true
-  save_best_only: true
+  save_best_only: false
 epochs: 1500
 executions_per_trial: 5
 loss_weights: None
 max_trials: 250
+metric_acc:
+  mean: 0.1986354765
+  std: 0.0201346696164127
+metric_f1:
+  mean: 0.15296793165284395
+  std: 0.02407851970115298
+metric_precision:
+  mean: 0.2220171913684758
+  std: 0.04400696192947799
+metric_recall:
+  mean: 0.19906222378729868
+  std: 0.019986859250033958
 model_args:
   alpha: 0.1
   dropout: 0.5
@@ -36,5 +46,17 @@ optimizer_class_args:
   module_path: torch.optim
 tbwriter_args:
   log_dir: ./logs/ALOI
+val_metric_acc:
+  mean: 0.100974656
+  std: 0.0007797280000000018
+val_metric_f1:
+  mean: 0.019480452944557344
+  std: 0.0045342604435066195
+val_metric_precision:
+  mean: 0.01587355916186027
+  std: 0.02184587923604952
+val_metric_recall:
+  mean: 0.10004901960784315
+  std: 0.0002136715168402193
 weight_decay1: 0.01
 weight_decay2: 0.0005
