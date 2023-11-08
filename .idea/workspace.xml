@@ -6,80 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="182fff83-b3c2-48f6-8c1d-da66fec71036" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/3sources/20231107_204747229739.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/3sources/20231107_204747266542.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/3sources/20231107_204747914739.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Cora/20231105_101203258047.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Cora/20231105_101203752770.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Cora/20231105_101203992767.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Cora/20231105_101204242766.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Cora/20231105_101205650062.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Cora/20231105_101205900061.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_211004104297.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_211004354138.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_211004404141.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_211004452567.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_211004491354.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_211005567634.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_211005942537.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_211005983505.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/Wikipedia/20231105_211006661131.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/citeseer/20231104_190123679499.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/citeseer/20231104_190135624563.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/citeseer/20231104_190137385129.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkpoint/citeseer/20231104_190141333125.pth" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/ALOI.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/ALOI.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/Wikipedia.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/Wikipedia.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/citeseer.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/citeseer.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mytool" beforeDir="false" afterPath="$PROJECT_DIR$/mytool" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables/3sources.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tables/3sources.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables/ALOI.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tables/ALOI.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables/BBCSports.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tables/BBCSports.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables/BBCnews.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tables/BBCnews.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables/Cora.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tables/Cora.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables/MNIST.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tables/MNIST.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables/NGs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tables/NGs.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables/Wikipedia.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tables/Wikipedia.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables/citeseer.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tables/citeseer.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/conf.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df0.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df0.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df1.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df10.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df10.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df10.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df10.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df11.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df11.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df11.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df11.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df12.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df12.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df12.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df12.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df13.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df13.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df13.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df13.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df14.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df14.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df14.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df14.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df15.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df15.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df15.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df15.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df16.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df16.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df16.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df16.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df17.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df17.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df17.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df17.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df18.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df18.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df18.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df18.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df19.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df19.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df19.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df19.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df2.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df3.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df4.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df4.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df5.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df5.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df6.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df6.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df7.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df7.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df7.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df8.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df8.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df8.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df9.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_result/3sources/df9.png" beforeDir="false" afterPath="$PROJECT_DIR$/temp_result/3sources/df9.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
