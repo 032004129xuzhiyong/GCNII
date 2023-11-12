@@ -38,6 +38,9 @@ def train_one_args(args):
     # build model
     # origin model
     device = args['device']
+    if device=='tpu':
+        import torch_xla.core.xla_model as xm
+        device = xm.xla_device()
     ModelClass = tool.import_class(**args['model_class_args'])
     model = ModelClass(n_feats=sum(n_feats), n_class=n_class, **args['model_args']).to(device)
 
