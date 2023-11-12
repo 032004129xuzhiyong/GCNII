@@ -76,14 +76,14 @@ def train_one_args(args):
                          callbacks=[
                              mtorch.DfSaveCallback(**args['dfcallback_args']),
                              #mtorch.TbWriterCallback(**args['tbwriter_args']),
-                             mtorch.EarlyStoppingCallback(**args['earlystop_args']),
+                             mtorch.EarlyStoppingCallback(quiet=args['quiet'],**args['earlystop_args']),
                              mtorch.TunerRemovePreFileInDir([
                                  args['earlystop_args']['checkpoint_dir'],
                                  #args['tbwriter_args']['log_dir'],
                              ], 10, 0.8)
                              # mtorch.PlotLossMetricTimeLr(),
                              # scheduler_callback,
-                         ])
+                         ], quiet=args['quiet'])
 
     # return
     return history.history
@@ -247,6 +247,11 @@ if __name__ == '__main__':
                         default=100,
                         type=int,
                         help='earlystop args patience')
+    parser.add_argument('--quiet', '-q',
+                        action='store_true',
+                        default=False,
+                        type=bool,
+                        help='whether to show logs')
     #others
     parser.add_argument('--train-times-with-no-tuner',
                         default=1,
@@ -276,7 +281,7 @@ if __name__ == '__main__':
         #config yaml 第一层级
         first_deep_dict = {key:parser_args[key] for key in parser_args.keys()
                            if key in ['max_trials','executions_per_trial',
-                            'best_trial','best_trial_save_dir','device','epochs']}
+                            'best_trial','best_trial_save_dir','device','epochs','quiet']}
         args.update(first_deep_dict)
         #config yaml 第二层级
         args['dataset_args']['topk'] = parser_args['topk']
@@ -298,6 +303,7 @@ if __name__ == '__main__':
                 executions_per_trial=args['executions_per_trial'],
                 max_trials=args['max_trials'],
                 mode='max',
+                quiet=args['quiet'],
             )
             tuner.search(args=args)
 
