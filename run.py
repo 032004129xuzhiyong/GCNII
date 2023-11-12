@@ -250,7 +250,6 @@ if __name__ == '__main__':
     parser.add_argument('--quiet', '-q',
                         action='store_true',
                         default=False,
-                        type=bool,
                         help='whether to show logs')
     #others
     parser.add_argument('--train-times-with-no-tuner',
