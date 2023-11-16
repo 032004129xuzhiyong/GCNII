@@ -1,0 +1,63 @@
+best_trial: 10
+best_trial_save_dir: best/
+dataset_args:
+  mat_path: data/Youtube.mat
+  topk: 10
+  train_ratio: 0.1
+device: cuda
+dfcallback_args:
+  df_save_path: ./tables/Youtube.csv
+earlystop_args:
+  checkpoint_dir: ./checkpoint/Youtube
+  monitor: val_metric_acc
+  patience: 100
+  restore_best_weights: true
+  save_best_only: false
+epochs: 1500
+executions_per_trial: 2
+loss_weights: None
+max_trials: 125
+metric_acc:
+  mean: 0.5235000000000001
+  std: 0.05422407214512756
+metric_f1:
+  mean: 0.49852014912252185
+  std: 0.06607167807367795
+metric_precision:
+  mean: 0.5358365974994115
+  std: 0.059295616316563195
+metric_recall:
+  mean: 0.5161431623931624
+  std: 0.05674884715870169
+model_args:
+  alpha: 0.1
+  dropout: 0.5
+  hid_dim: 128
+  lamda: 0.5
+  layerclass: GCNIILayer
+  nlayer: 8
+model_class_args:
+  class_name: GCNII_model
+  module_path: models.model
+optimizer_args:
+  lr: 0.01
+optimizer_class_args:
+  class_name: Adam
+  module_path: torch.optim
+quiet: false
+tbwriter_args:
+  log_dir: ./logs/Youtube
+val_metric_acc:
+  mean: 0.453444451
+  std: 0.04347256578096546
+val_metric_f1:
+  mean: 0.42926654236531625
+  std: 0.04838631136363023
+val_metric_precision:
+  mean: 0.4879743130416528
+  std: 0.03867809329635878
+val_metric_recall:
+  mean: 0.4543522367021602
+  std: 0.043236799139455336
+weight_decay1: 0.01
+weight_decay2: 0.0005

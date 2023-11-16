@@ -1,7 +1,7 @@
 best_trial: 20
 best_trial_save_dir: best/
 dataset_args:
-  mat_path: ../../code/data/Caltech101all.mat
+  mat_path: data/Caltech101all.mat
   topk: 10
   train_ratio: 0.05
 device: cuda

@@ -1,0 +1,63 @@
+best_trial: 10
+best_trial_save_dir: best/
+dataset_args:
+  mat_path: data/WebKB_texas.mat
+  topk: 10
+  train_ratio: 0.1
+device: cuda
+dfcallback_args:
+  df_save_path: ./tables/WebKB_texas.csv
+earlystop_args:
+  checkpoint_dir: ./checkpoint/WebKB_texas
+  monitor: val_metric_acc
+  patience: 100
+  restore_best_weights: true
+  save_best_only: false
+epochs: 1500
+executions_per_trial: 2
+loss_weights: None
+max_trials: 125
+metric_acc:
+  mean: 1.0
+  std: 0.0
+metric_f1:
+  mean: 1.0
+  std: 0.0
+metric_precision:
+  mean: 1.0
+  std: 0.0
+metric_recall:
+  mean: 1.0
+  std: 0.0
+model_args:
+  alpha: 0.1
+  dropout: 0.5
+  hid_dim: 96
+  lamda: 0.5
+  layerclass: GCNIILayer
+  nlayer: 10
+model_class_args:
+  class_name: GCNII_model
+  module_path: models.model
+optimizer_args:
+  lr: 0.01
+optimizer_class_args:
+  class_name: Adam
+  module_path: torch.optim
+quiet: false
+tbwriter_args:
+  log_dir: ./logs/WebKB_texas
+val_metric_acc:
+  mean: 0.7260202679999999
+  std: 0.05668623717484656
+val_metric_f1:
+  mean: 0.4942841444048713
+  std: 0.07200905017930857
+val_metric_precision:
+  mean: 0.574067841454976
+  std: 0.08345743479960412
+val_metric_recall:
+  mean: 0.5470598467396497
+  std: 0.05051807659005579
+weight_decay1: 0.01
+weight_decay2: 0.0005

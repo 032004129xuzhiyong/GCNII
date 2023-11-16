@@ -1,0 +1,63 @@
+best_trial: 10
+best_trial_save_dir: best/
+dataset_args:
+  mat_path: data/Caltech10120.mat
+  topk: 10
+  train_ratio: 0.1
+device: cuda
+dfcallback_args:
+  df_save_path: ./tables/Caltech10120.csv
+earlystop_args:
+  checkpoint_dir: ./checkpoint/Caltech10120
+  monitor: val_metric_acc
+  patience: 100
+  restore_best_weights: true
+  save_best_only: false
+epochs: 1500
+executions_per_trial: 2
+loss_weights: None
+max_trials: 125
+metric_acc:
+  mean: 0.368310335
+  std: 0.2031911171216828
+metric_f1:
+  mean: 0.3388826157065746
+  std: 0.2166389202186015
+metric_precision:
+  mean: 0.391902731395519
+  std: 0.2112708486405136
+metric_recall:
+  mean: 0.3631629554655871
+  std: 0.20523905439150164
+model_args:
+  alpha: 0.1
+  dropout: 0.5
+  hid_dim: 104
+  lamda: 0.5
+  layerclass: GCNIILayer
+  nlayer: 8
+model_class_args:
+  class_name: GCNII_model
+  module_path: models.model
+optimizer_args:
+  lr: 0.01
+optimizer_class_args:
+  class_name: Adam
+  module_path: torch.optim
+quiet: false
+tbwriter_args:
+  log_dir: ./logs/Caltech10120
+val_metric_acc:
+  mean: 0.4687050729999999
+  std: 0.24429150030526714
+val_metric_f1:
+  mean: 0.28201799679225
+  std: 0.18809574924719125
+val_metric_precision:
+  mean: 0.3522013371554369
+  std: 0.18320035682319627
+val_metric_recall:
+  mean: 0.33221194367663964
+  std: 0.1717797395362438
+weight_decay1: 0.01
+weight_decay2: 0.0005

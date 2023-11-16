@@ -1,9 +1,9 @@
-best_trial: 20
-best_trial_save_dir: temp_result/
+best_trial: 10
+best_trial_save_dir: best/
 dataset_args:
   mat_path: data/BBCnews.mat
   topk: 10
-  train_ratio: 0.05
+  train_ratio: 0.1
 device: cuda
 dfcallback_args:
   df_save_path: ./tables/BBCnews.csv
@@ -14,28 +14,28 @@ earlystop_args:
   restore_best_weights: true
   save_best_only: false
 epochs: 1500
-executions_per_trial: 5
+executions_per_trial: 2
 loss_weights: None
-max_trials: 250
+max_trials: 125
 metric_acc:
-  mean: 0.8015360945
-  std: 0.030934753101147825
+  mean: 1.0
+  std: 0.0
 metric_f1:
-  mean: 0.7877368589760596
-  std: 0.03467166334801642
+  mean: 1.0
+  std: 0.0
 metric_precision:
-  mean: 0.8187370863463702
-  std: 0.029855480616084097
+  mean: 1.0
+  std: 0.0
 metric_recall:
-  mean: 0.7997899968299087
-  std: 0.025909217823376633
+  mean: 1.0
+  std: 0.0
 model_args:
   alpha: 0.1
   dropout: 0.5
-  hid_dim: 48
+  hid_dim: 120
   lamda: 0.5
   layerclass: GCNIILayer
-  nlayer: 2
+  nlayer: 8
 model_class_args:
   class_name: GCNII_model
   module_path: models.model
@@ -44,19 +44,20 @@ optimizer_args:
 optimizer_class_args:
   class_name: Adam
   module_path: torch.optim
+quiet: false
 tbwriter_args:
   log_dir: ./logs/BBCnews
 val_metric_acc:
-  mean: 0.8885560705
-  std: 0.0313095715646111
+  mean: 0.9264181450000001
+  std: 0.01204595429691167
 val_metric_f1:
-  mean: 0.8811999588259646
-  std: 0.0384014304942293
+  mean: 0.9255931071741796
+  std: 0.013357695743776028
 val_metric_precision:
-  mean: 0.8971417358901412
-  std: 0.03452454538487688
+  mean: 0.9276515206941479
+  std: 0.01557467079060748
 val_metric_recall:
-  mean: 0.8934738377555836
-  std: 0.026745001542481245
+  mean: 0.9332625398614601
+  std: 0.007924315382671172
 weight_decay1: 0.01
 weight_decay2: 0.0005

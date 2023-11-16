@@ -1,0 +1,63 @@
+best_trial: 10
+best_trial_save_dir: best/
+dataset_args:
+  mat_path: data/100leaves.mat
+  topk: 10
+  train_ratio: 0.1
+device: cuda
+dfcallback_args:
+  df_save_path: ./tables/100leaves.csv
+earlystop_args:
+  checkpoint_dir: ./checkpoint/100leaves
+  monitor: val_metric_acc
+  patience: 100
+  restore_best_weights: true
+  save_best_only: false
+epochs: 1500
+executions_per_trial: 2
+loss_weights: None
+max_trials: 125
+metric_acc:
+  mean: 0.74324414
+  std: 0.03502932297651153
+metric_f1:
+  mean: 0.7095181978515314
+  std: 0.0420906704671182
+metric_precision:
+  mean: 0.7488672438672438
+  std: 0.04481046207050018
+metric_recall:
+  mean: 0.7289562289562289
+  std: 0.03818989338535073
+model_args:
+  alpha: 0.1
+  dropout: 0.5
+  hid_dim: 120
+  lamda: 0.5
+  layerclass: GCNIILayer
+  nlayer: 2
+model_class_args:
+  class_name: GCNII_model
+  module_path: models.model
+optimizer_args:
+  lr: 0.01
+optimizer_class_args:
+  class_name: Adam
+  module_path: torch.optim
+quiet: false
+tbwriter_args:
+  log_dir: ./logs/100leaves
+val_metric_acc:
+  mean: 0.6991507189999999
+  std: 0.04761884706722297
+val_metric_f1:
+  mean: 0.6807188729840871
+  std: 0.05167509821835856
+val_metric_precision:
+  mean: 0.720237269266969
+  std: 0.048093741615594626
+val_metric_recall:
+  mean: 0.7044285714285714
+  std: 0.046878354527153866
+weight_decay1: 0.01
+weight_decay2: 0.0005

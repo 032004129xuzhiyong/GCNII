@@ -1,9 +1,9 @@
-best_trial: 20
-best_trial_save_dir: temp_result/
+best_trial: 10
+best_trial_save_dir: best/
 dataset_args:
   mat_path: data/ALOI.mat
   topk: 10
-  train_ratio: 0.05
+  train_ratio: 0.1
 device: cuda
 dfcallback_args:
   df_save_path: ./tables/ALOI.csv
@@ -14,28 +14,28 @@ earlystop_args:
   restore_best_weights: true
   save_best_only: false
 epochs: 1500
-executions_per_trial: 5
+executions_per_trial: 2
 loss_weights: None
-max_trials: 250
+max_trials: 125
 metric_acc:
-  mean: 0.1986354765
-  std: 0.0201346696164127
+  mean: 0.25208549399999997
+  std: 0.03250816288085047
 metric_f1:
-  mean: 0.15296793165284395
-  std: 0.02407851970115298
+  mean: 0.19576243215716865
+  std: 0.03477662592713371
 metric_precision:
-  mean: 0.2220171913684758
-  std: 0.04400696192947799
+  mean: 0.25905213365572777
+  std: 0.021431480221727882
 metric_recall:
-  mean: 0.19906222378729868
-  std: 0.019986859250033958
+  mean: 0.2381397306397306
+  std: 0.032712509530260316
 model_args:
   alpha: 0.1
   dropout: 0.5
-  hid_dim: 120
+  hid_dim: 112
   lamda: 0.5
   layerclass: GCNIILayer
-  nlayer: 32
+  nlayer: 36
 model_class_args:
   class_name: GCNII_model
   module_path: models.model
@@ -44,19 +44,20 @@ optimizer_args:
 optimizer_class_args:
   class_name: Adam
   module_path: torch.optim
+quiet: false
 tbwriter_args:
   log_dir: ./logs/ALOI
 val_metric_acc:
-  mean: 0.100974656
-  std: 0.0007797280000000018
+  mean: 0.11163568800000001
+  std: 0.02711454493916597
 val_metric_f1:
-  mean: 0.019480452944557344
-  std: 0.0045342604435066195
+  mean: 0.023825696871200768
+  std: 0.0144250261857048
 val_metric_precision:
-  mean: 0.01587355916186027
-  std: 0.02184587923604952
+  mean: 0.01831951262893089
+  std: 0.01655439170234637
 val_metric_recall:
-  mean: 0.10004901960784315
-  std: 0.0002136715168402193
+  mean: 0.1093760738831615
+  std: 0.028128221649484527
 weight_decay1: 0.01
 weight_decay2: 0.0005

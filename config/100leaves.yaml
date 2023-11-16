@@ -1,7 +1,7 @@
 best_trial: 20
 best_trial_save_dir: best/
 dataset_args:
-  mat_path: ../../code/data/100leaves.mat
+  mat_path: data/100leaves.mat
   topk: 10
   train_ratio: 0.05
 device: cuda

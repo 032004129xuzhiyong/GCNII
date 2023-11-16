@@ -1,0 +1,63 @@
+best_trial: 10
+best_trial_save_dir: best/
+dataset_args:
+  mat_path: data/ORL2.mat
+  topk: 10
+  train_ratio: 0.1
+device: cuda
+dfcallback_args:
+  df_save_path: ./tables/ORL2.csv
+earlystop_args:
+  checkpoint_dir: ./checkpoint/ORL2
+  monitor: val_metric_acc
+  patience: 100
+  restore_best_weights: true
+  save_best_only: false
+epochs: 1500
+executions_per_trial: 2
+loss_weights: None
+max_trials: 125
+metric_acc:
+  mean: 0.0796759051
+  std: 0.015974643695176056
+metric_f1:
+  mean: 0.03478429104336541
+  std: 0.010821904008504272
+metric_precision:
+  mean: 0.03312355403853768
+  std: 0.010345463739483125
+metric_recall:
+  mean: 0.06410256410256407
+  std: 0.01516943534128108
+model_args:
+  alpha: 0.1
+  dropout: 0.5
+  hid_dim: 96
+  lamda: 0.5
+  layerclass: GCNIILayer
+  nlayer: 6
+model_class_args:
+  class_name: GCNII_model
+  module_path: models.model
+optimizer_args:
+  lr: 0.01
+optimizer_class_args:
+  class_name: Adam
+  module_path: torch.optim
+quiet: false
+tbwriter_args:
+  log_dir: ./logs/ORL2
+val_metric_acc:
+  mean: 0.0405855691
+  std: 0.013937263171924123
+val_metric_f1:
+  mean: 0.00811412571660287
+  std: 0.0070466064388559424
+val_metric_precision:
+  mean: 0.011251970516344582
+  std: 0.011454227616071946
+val_metric_recall:
+  mean: 0.042812499999999996
+  std: 0.01569048776329149
+weight_decay1: 0.01
+weight_decay2: 0.0005

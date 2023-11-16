@@ -1,9 +1,9 @@
-best_trial: 20
-best_trial_save_dir: temp_result/
+best_trial: 10
+best_trial_save_dir: best/
 dataset_args:
   mat_path: data/Wikipedia.mat
   topk: 10
-  train_ratio: 0.05
+  train_ratio: 0.1
 device: cuda
 dfcallback_args:
   df_save_path: ./tables/Wikipedia.csv
@@ -14,28 +14,28 @@ earlystop_args:
   restore_best_weights: true
   save_best_only: false
 epochs: 1500
-executions_per_trial: 5
+executions_per_trial: 2
 loss_weights: None
-max_trials: 250
+max_trials: 125
 metric_acc:
-  mean: 0.49650985700000005
-  std: 0.030256305622663696
+  mean: 0.6449275460000001
+  std: 0.02359252058420895
 metric_f1:
-  mean: 0.4433322793924212
-  std: 0.03449582406777872
+  mean: 0.5901392486082887
+  std: 0.0415142936388259
 metric_precision:
-  mean: 0.4993944509353879
-  std: 0.034689921045715714
+  mean: 0.6452830564497232
+  std: 0.051929797797081886
 metric_recall:
-  mean: 0.46570334319560114
-  std: 0.027352931687339817
+  mean: 0.6011706349206349
+  std: 0.030566949277496293
 model_args:
   alpha: 0.1
   dropout: 0.5
-  hid_dim: 128
+  hid_dim: 224
   lamda: 0.5
   layerclass: GCNIILayer
-  nlayer: 16
+  nlayer: 34
 model_class_args:
   class_name: GCNII_model
   module_path: models.model
@@ -44,19 +44,20 @@ optimizer_args:
 optimizer_class_args:
   class_name: Adam
   module_path: torch.optim
+quiet: false
 tbwriter_args:
   log_dir: ./logs/Wikipedia
 val_metric_acc:
-  mean: 0.6257207920000001
-  std: 0.029686520123690753
+  mean: 0.6352563979999999
+  std: 0.042249377740713245
 val_metric_f1:
-  mean: 0.5585737718353464
-  std: 0.042414443660936635
+  mean: 0.5687960121642045
+  std: 0.0289276909105266
 val_metric_precision:
-  mean: 0.6197029988295147
-  std: 0.04917895763325017
+  mean: 0.6055709235995567
+  std: 0.0326373625168456
 val_metric_recall:
-  mean: 0.5901106444034973
-  std: 0.02514741651898799
+  mean: 0.6044849646000019
+  std: 0.028126274853161753
 weight_decay1: 0.01
 weight_decay2: 0.0005
