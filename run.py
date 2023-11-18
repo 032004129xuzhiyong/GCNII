@@ -182,38 +182,38 @@ if __name__ == '__main__':
                         help='yaml config file path. e.g. config/3sources.yaml')
     #tuner
     parser.add_argument('--max-trials',
-                        default=250,
+                        default=None,
                         type=int,
                         help='最大实验次数',
                         dest='max_trials')
     parser.add_argument('--executions-per-trial',
-                        default=5,
+                        default=None,
                         type=int,
                         help='每次实验(每个配置)执行几遍，减少误差',
                         dest='executions_per_trial')
     parser.add_argument('--best-trial',
-                        default=20,
+                        default=None,
                         type=int,
                         help='获得最优超参数后，使用超参数执行几次来获得实验数据',
                         dest='best_trial')
     parser.add_argument('--best-trial-save-dir',
-                        default='best/',
+                        default=None,
                         type=str,
                         help='最优超参数实验数据存储目录',
                         dest='best_trial_save_dir')
     #dataset
     parser.add_argument('--topk',
-                        default=10,
+                        default=None,
                         type=int,
                         help='knn topk')
     parser.add_argument('--train-ratio',
-                        default=0.05,
+                        default=None,
                         type=float,
                         help='train val split',
                         dest='train_ratio')
     #model args
     parser.add_argument('--layerclass',
-                        default='GCNIILayer',
+                        default=None,
                         type=str,
                         help='GCNII layer class, all layer classes: GCNIILayer/GCNII_star_Layer')
     parser.add_argument('--nlayer',
@@ -227,24 +227,24 @@ if __name__ == '__main__':
                         dest='hid_dim')
     #training
     parser.add_argument('--device',
-                        default='cuda',
+                        default=None,
                         type=str,
                         help='torch device')
     parser.add_argument('--epochs',
-                        default=1500,
+                        default=None,
                         type=int,
                         help='epochs per training')
     parser.add_argument('--save-best-only', '-sbo',
                         action='store_true',
-                        default=False,
+                        default=None,
                         help='earlystop args if save best only',
                         dest='save_best_only')
     parser.add_argument('--monitor',
-                        default='val_metric_acc',
+                        default=None,
                         type=str,
                         help='earlystop args monitor metrics. e.g. loss/val_loss/metric_acc/val_metric_acc')
     parser.add_argument('--patience',
-                        default=100,
+                        default=None,
                         type=int,
                         help='earlystop args patience')
     parser.add_argument('--quiet', '-q',
@@ -278,19 +278,21 @@ if __name__ == '__main__':
 
         #根据parser_args修改conf
         #config yaml 第一层级
-        first_deep_dict = {key:parser_args[key] for key in parser_args.keys()
-                           if key in ['max_trials','executions_per_trial',
-                            'best_trial','best_trial_save_dir','device','epochs','quiet']}
-        args.update(first_deep_dict)
+        # first_deep_dict = {key:parser_args[key] for key in parser_args.keys()
+        #                    if key in ['max_trials','executions_per_trial',
+        #                     'best_trial','best_trial_save_dir','device','epochs','quiet']}
+        # args.update(first_deep_dict)
+        for key in ['max_trials','executions_per_trial', 'best_trial','best_trial_save_dir','device','epochs','quiet']:
+            args[key] =parser_args[key] if parser_args[key] is not None else args[key]
         #config yaml 第二层级
-        args['dataset_args']['topk'] = parser_args['topk']
-        args['dataset_args']['train_ratio'] = parser_args['train_ratio']
-        args['model_args']['layerclass'] = parser_args['layerclass']
+        args['dataset_args']['topk'] = parser_args['topk'] if parser_args['topk'] is not None else args['dataset_args']['topk']
+        args['dataset_args']['train_ratio'] = parser_args['train_ratio'] if parser_args['train_ratio'] is not None else args['dataset_args']['train_ratio']
+        args['model_args']['layerclass'] = parser_args['layerclass'] if parser_args['layerclass'] is not None else args['model_args']['layerclass']
         args['model_args']['nlayer'] = parser_args['nlayer']  if parser_args['nlayer'] is not None else args['model_args']['nlayer']
         args['model_args']['hid_dim'] = parser_args['hid_dim'] if parser_args['hid_dim'] is not None else args['model_args']['hid_dim']
-        args['earlystop_args']['save_best_only'] = parser_args['save_best_only']
-        args['earlystop_args']['monitor'] = parser_args['monitor']
-        args['earlystop_args']['patience'] = parser_args['patience']
+        args['earlystop_args']['save_best_only'] = parser_args['save_best_only'] if parser_args['save_best_only'] is not None else args['earlystop_args']['save_best_only']
+        args['earlystop_args']['monitor'] = parser_args['monitor'] if parser_args['monitor'] is not None else args['earlystop_args']['monitor']
+        args['earlystop_args']['patience'] = parser_args['patience'] if parser_args['patience'] is not None else args['earlystop_args']['patience']
 
         if tool.has_hyperparameter(args):
             #tuner
@@ -330,5 +332,5 @@ if __name__ == '__main__':
 
     print(compute_mean_metric_in_bestdir_for_all_dataset('temp_result'))
 
-    #print(compute_mean_metric_in_bestdir_for_one_dataset('best/NGs',True))
+    #print(compute_mean_metric_in_bestdir_for_one_dataset('temp_result/MITIndoor',True))
 
