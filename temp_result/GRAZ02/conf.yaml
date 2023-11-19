@@ -1,0 +1,63 @@
+best_trial: 10
+best_trial_save_dir: best/
+dataset_args:
+  mat_path: data/GRAZ02.mat
+  topk: 10
+  train_ratio: 0.1
+device: cuda
+dfcallback_args:
+  df_save_path: ./tables/GRAZ02.csv
+earlystop_args:
+  checkpoint_dir: ./checkpoint/GRAZ02
+  monitor: val_metric_acc
+  patience: 100
+  restore_best_weights: true
+  save_best_only: false
+epochs: 1500
+executions_per_trial: 2
+loss_weights: None
+max_trials: 125
+metric_acc:
+  mean: 0.295918357
+  std: 0.017804418457998593
+metric_f1:
+  mean: 0.22921850314167852
+  std: 0.029224982635216838
+metric_precision:
+  mean: 0.32651170475491165
+  std: 0.09325887788204722
+metric_recall:
+  mean: 0.2952835711852739
+  std: 0.018076000328026327
+model_args:
+  alpha: 0.1
+  dropout: 0.5
+  hid_dim: 120
+  lamda: 0.5
+  layerclass: GCNIILayer
+  nlayer: 46
+model_class_args:
+  class_name: GCNII_model
+  module_path: models.model
+optimizer_args:
+  lr: 0.01
+optimizer_class_args:
+  class_name: Adam
+  module_path: torch.optim
+quiet: false
+tbwriter_args:
+  log_dir: ./logs/GRAZ02
+val_metric_acc:
+  mean: 0.29074492400000007
+  std: 0.004012728831693458
+val_metric_f1:
+  mean: 0.131603809242972
+  std: 0.03195889257369959
+val_metric_precision:
+  mean: 0.18318817492392542
+  std: 0.09439815184717462
+val_metric_recall:
+  mean: 0.26315352356149035
+  std: 0.02496500251836235
+weight_decay1: 0.01
+weight_decay2: 0.0005
