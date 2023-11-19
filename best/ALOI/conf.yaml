@@ -1,8 +1,8 @@
 best_trial: 10
-best_trial_save_dir: best/
+best_trial_save_dir: temp_result/
 dataset_args:
   mat_path: data/ALOI.mat
-  topk: 10
+  topk: 140
   train_ratio: 0.1
 device: cuda
 dfcallback_args:
@@ -12,30 +12,30 @@ earlystop_args:
   monitor: val_metric_acc
   patience: 100
   restore_best_weights: true
-  save_best_only: false
+  save_best_only: true
 epochs: 1500
 executions_per_trial: 2
 loss_weights: None
 max_trials: 125
 metric_acc:
-  mean: 0.25208549399999997
-  std: 0.03250816288085047
+  mean: 0.22242990799999998
+  std: 0.028896493789747853
 metric_f1:
-  mean: 0.19576243215716865
-  std: 0.03477662592713371
+  mean: 0.1634430609903558
+  std: 0.029363995956654065
 metric_precision:
-  mean: 0.25905213365572777
-  std: 0.021431480221727882
+  mean: 0.236958290908562
+  std: 0.036319734344286925
 metric_recall:
-  mean: 0.2381397306397306
-  std: 0.032712509530260316
+  mean: 0.20946969696969692
+  std: 0.0245137515051416
 model_args:
   alpha: 0.1
   dropout: 0.5
-  hid_dim: 112
+  hid_dim: 176
   lamda: 0.5
   layerclass: GCNIILayer
-  nlayer: 36
+  nlayer: 22
 model_class_args:
   class_name: GCNII_model
   module_path: models.model
@@ -48,16 +48,16 @@ quiet: false
 tbwriter_args:
   log_dir: ./logs/ALOI
 val_metric_acc:
-  mean: 0.11163568800000001
-  std: 0.02711454493916597
+  mean: 0.1269547345
+  std: 0.03698040839529861
 val_metric_f1:
-  mean: 0.023825696871200768
-  std: 0.0144250261857048
+  mean: 0.03541684004948974
+  std: 0.022683069919359436
 val_metric_precision:
-  mean: 0.01831951262893089
-  std: 0.01655439170234637
+  mean: 0.027879576463913824
+  std: 0.03033170688333643
 val_metric_recall:
-  mean: 0.1093760738831615
-  std: 0.028128221649484527
+  mean: 0.1255627147766323
+  std: 0.03892623267596628
 weight_decay1: 0.01
 weight_decay2: 0.0005

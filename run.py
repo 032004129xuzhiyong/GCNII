@@ -30,9 +30,12 @@ def bind_boolind_for_fn(func, train_bool_ind, val_bool_ind):
     return binded_func
 
 
-def train_one_args(args):
+def train_one_args(args,data=None):
     # load data
-    adjs, inputs, labels, train_bool, val_bool, n_view, n_node, n_feats, n_class = load_mat(**args['dataset_args'])
+    if data is not None:
+        adjs, inputs, labels, train_bool, val_bool, n_view, n_node, n_feats, n_class = data
+    else:
+        adjs, inputs, labels, train_bool, val_bool, n_view, n_node, n_feats, n_class = load_mat(**args['dataset_args'])
     dataload = [((inputs, adjs), labels)]
 
     # build model
@@ -89,7 +92,7 @@ def train_one_args(args):
     return history.history
 
 
-def train_with_besthp_and_save_config_and_history(best_conf):
+def train_with_besthp_and_save_config_and_history(best_conf,data=None):
     """
     保存两个数据： 最优配置(存储为yaml文件) 和  多次实验的过程数据(pd.DataFrame数据格式存储为多个csv文件)
     :param best_conf: dict
@@ -103,7 +106,7 @@ def train_with_besthp_and_save_config_and_history(best_conf):
         os.makedirs(best_dataset_dir)
 
     for tri_idx in range(best_conf['best_trial']):
-        tri_logs = train_one_args(best_conf)
+        tri_logs = train_one_args(best_conf,data)
         df = pd.DataFrame(tri_logs)
         #csv
         df_save_path = os.path.join(best_dataset_dir, 'df' + str(tri_idx) + '.csv')
@@ -169,8 +172,9 @@ class MyTuner(mtorch.MyTuner):
 
     def run_trial(self, hp, **kwargs):
         args = kwargs['args']  # dict
+        data = kwargs['data']
         args = tool.modify_dict_with_hp(args, hp)
-        history = train_one_args(args)
+        history = train_one_args(args,data)
         return max(history['val_metric_acc'])
 
 
@@ -294,6 +298,9 @@ if __name__ == '__main__':
         args['earlystop_args']['monitor'] = parser_args['monitor'] if parser_args['monitor'] is not None else args['earlystop_args']['monitor']
         args['earlystop_args']['patience'] = parser_args['patience'] if parser_args['patience'] is not None else args['earlystop_args']['patience']
 
+        #Load the same data outside the scope of multiple experiments
+        one_config_data = load_mat(**args['dataset_args'])
+
         if tool.has_hyperparameter(args):
             #tuner
             # for train_with_besthp_and_save_config_and_history
@@ -306,7 +313,7 @@ if __name__ == '__main__':
                 mode='max',
                 quiet=args['quiet'],
             )
-            tuner.search(args=args)
+            tuner.search(args=args,data=one_config_data)
 
             # 获得最优config
             best_hp = tuner.get_best_hyperparameters()[0]
@@ -319,7 +326,7 @@ if __name__ == '__main__':
 
             #用最优参数训练，评估平均准确率，并保存实验过程数据和最优配置在 ./best目录下
             best_args = tool.modify_dict_with_hp(origin_args, best_hp, False)
-            train_with_besthp_and_save_config_and_history(best_args)
+            train_with_besthp_and_save_config_and_history(best_args,one_config_data)
         else:
             #only train times
             #没有超参数搜索
@@ -327,7 +334,7 @@ if __name__ == '__main__':
             #修改用于最优参数训练的参数
             best_args['best_trial'] = parser_args['tt_nt']
             best_args['best_trial_save_dir'] = parser_args['tsd_nt']
-            train_with_besthp_and_save_config_and_history(best_args)
+            train_with_besthp_and_save_config_and_history(best_args,one_config_data)
 
 
     print(compute_mean_metric_in_bestdir_for_all_dataset('temp_result'))

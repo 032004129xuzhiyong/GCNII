@@ -1,9 +1,13 @@
-best_trial: 20
+best_trial: 10
 best_trial_save_dir: best/
 dataset_args:
   mat_path: data/scene15.mat
-  topk: 10
-  train_ratio: 0.05
+  topk:
+    type: int
+    min: 10
+    max: 200
+    step: 10
+  train_ratio: 0.1
 device: cuda
 dfcallback_args:
   df_save_path: ./tables/${model_class_args.class_name}.csv
@@ -14,23 +18,23 @@ earlystop_args:
   restore_best_weights: true
   save_best_only: true
 epochs: 1500
-executions_per_trial: 5
+executions_per_trial: 2
 loss_weights: None
-max_trials: 250
+max_trials: 125
 model_args:
   alpha: 0.1
   dropout: 0.5
   hid_dim:
-    max: 128
-    min: 16
+    max: 256
+    min: 64
     step: 8
     type: int
   lamda: 0.5
   layerclass: GCNIILayer
   nlayer:
-    max: 64
-    min: 2
-    step: 2
+    max: 128
+    min: 32
+    step: 8
     type: int
 model_class_args:
   class_name: GCNII_model

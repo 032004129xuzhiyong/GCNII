@@ -47,7 +47,7 @@ def load_mat(mat_path, topk=10, train_ratio=0.1):
     train_bool = torch.from_numpy(train_bool)
     val_bool = torch.from_numpy(val_bool)
     print(f'n_view: {n_view} n_node: {n_node} n_feats: {n_feats} n_class: {n_class}')
-    print(f'labels: {labels.shape} train_bool: {train_bool.shape} val_bool: {val_bool.shape}')
+    print(f'labels: {labels.shape} train_bool: {train_bool.sum()} val_bool: {val_bool.sum()}')
     return adjs, inputs, labels, train_bool, val_bool, n_view, n_node, n_feats, n_class
 
 

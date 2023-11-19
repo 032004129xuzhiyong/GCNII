@@ -2,7 +2,7 @@ best_trial: 10
 best_trial_save_dir: best/
 dataset_args:
   mat_path: data/scene15.mat
-  topk: 10
+  topk: 90
   train_ratio: 0.1
 device: cuda
 dfcallback_args:
@@ -12,30 +12,30 @@ earlystop_args:
   monitor: val_metric_acc
   patience: 100
   restore_best_weights: true
-  save_best_only: false
+  save_best_only: true
 epochs: 1500
 executions_per_trial: 2
 loss_weights: None
 max_trials: 125
 metric_acc:
-  mean: 0.07723214149999999
-  std: 0.0070019583494230556
+  mean: 0.0857142875
+  std: 0.008540680171589163
 metric_f1:
-  mean: 0.05355619675357644
-  std: 0.007737108565946351
+  mean: 0.05701297044807704
+  std: 0.009630066095277222
 metric_precision:
-  mean: 0.0727222532004801
-  std: 0.02440660601258799
+  mean: 0.08038527318205825
+  std: 0.03290351441628719
 metric_recall:
-  mean: 0.07719218296637646
-  std: 0.006817184398916244
+  mean: 0.08419396732299954
+  std: 0.008680934217441193
 model_args:
   alpha: 0.1
   dropout: 0.5
-  hid_dim: 96
+  hid_dim: 200
   lamda: 0.5
   layerclass: GCNIILayer
-  nlayer: 48
+  nlayer: 64
 model_class_args:
   class_name: GCNII_model
   module_path: models.model
@@ -48,14 +48,14 @@ quiet: false
 tbwriter_args:
   log_dir: ./logs/scene15
 val_metric_acc:
-  mean: 0.086846667
-  std: 0.005480129605423234
+  mean: 0.087688876
+  std: 0.007038587165694774
 val_metric_f1:
-  mean: 0.01109120399545733
-  std: 0.0012713951529244804
+  mean: 0.01074410740669967
+  std: 0.0007962301334602904
 val_metric_precision:
-  mean: 0.006094172187710451
-  std: 0.0008719381458108153
+  mean: 0.00683772546899475
+  std: 0.0029573003808493446
 val_metric_recall:
   mean: 0.06666666666666661
   std: 1.3877787807814457e-17
