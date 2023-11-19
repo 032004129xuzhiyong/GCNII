@@ -7,7 +7,11 @@ best_trial_save_dir: best/ #最优超参数实验数据存储目录
 #data
 dataset_args:
   mat_path: data/NGs.mat
-  topk: 10 #knn前几个节点
+  topk: #knn前几个节点
+    type: int
+    min: 10
+    max: 200
+    step: 10
   train_ratio: 0.05 #训练集标记率
 
 #model
