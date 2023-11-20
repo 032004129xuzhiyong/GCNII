@@ -37,9 +37,10 @@ def load_mat(mat_path, topk=10, train_ratio=0.1):
     inputs = []
     n_feats = []
     for i in range(n_view):
+        tempX = X[i]
         if sp.isspmatrix(X[i]):
-            X[i] = X[i].toarray()
-        inputs.append(torch.from_numpy(X[i].astype(np.float32)).float())
+            tempX = X[i].toarray()
+        inputs.append(torch.from_numpy(tempX.astype(np.float32)).float())
         adjs.append(get_adj_matrix(X[i],topk).to_dense().float())
         n_feats.append(len(X[i][0]))
     train_bool, val_bool = split_train_and_val_to_get_bool_ind(labels,train_ratio)
@@ -146,7 +147,3 @@ def inspect_multiview_labels(labels):
 if __name__ == '__main__':
     r = load_mat('../data/3sources.mat', train_ratio=0.05)
     print(Counter(r[2][r[3]].numpy()))
-
-
-
-
