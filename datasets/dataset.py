@@ -38,11 +38,11 @@ def load_mat(mat_path, topk=10, train_ratio=0.1):
     n_feats = []
     for i in range(n_view):
         tempX = X[i]
-        if sp.isspmatrix(X[i]):
-            tempX = X[i].toarray()
+        if sp.isspmatrix(tempX):
+            tempX = tempX.toarray()
         inputs.append(torch.from_numpy(tempX.astype(np.float32)).float())
-        adjs.append(get_adj_matrix(X[i],topk).to_dense().float())
-        n_feats.append(len(X[i][0]))
+        adjs.append(get_adj_matrix(tempX,topk).to_dense().float())
+        n_feats.append(len(tempX[0]))
     train_bool, val_bool = split_train_and_val_to_get_bool_ind(labels,train_ratio)
     labels = torch.from_numpy(labels)
     train_bool = torch.from_numpy(train_bool)
