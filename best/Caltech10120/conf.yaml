@@ -1,5 +1,5 @@
 best_trial: 10
-best_trial_save_dir: best/
+best_trial_save_dir: temp_result/
 dataset_args:
   mat_path: data/Caltech10120.mat
   topk: 10
@@ -12,30 +12,30 @@ earlystop_args:
   monitor: val_metric_acc
   patience: 100
   restore_best_weights: true
-  save_best_only: false
+  save_best_only: true
 epochs: 1500
 executions_per_trial: 2
 loss_weights: None
 max_trials: 125
 metric_acc:
-  mean: 0.368310335
-  std: 0.2031911171216828
+  mean: 0.445606697
+  std: 0.15680331637636968
 metric_f1:
-  mean: 0.3388826157065746
-  std: 0.2166389202186015
+  mean: 0.41093374974429164
+  std: 0.1705407046998801
 metric_precision:
-  mean: 0.391902731395519
-  std: 0.2112708486405136
+  mean: 0.472212799832256
+  std: 0.16466441481612332
 metric_recall:
-  mean: 0.3631629554655871
-  std: 0.20523905439150164
+  mean: 0.4407894736842105
+  std: 0.15644085139610903
 model_args:
   alpha: 0.1
   dropout: 0.5
-  hid_dim: 104
+  hid_dim: 112
   lamda: 0.5
   layerclass: GCNIILayer
-  nlayer: 8
+  nlayer: 4
 model_class_args:
   class_name: GCNII_model
   module_path: models.model
@@ -48,16 +48,16 @@ quiet: false
 tbwriter_args:
   log_dir: ./logs/Caltech10120
 val_metric_acc:
-  mean: 0.4687050729999999
-  std: 0.24429150030526714
+  mean: 0.606381004
+  std: 0.16696226270964798
 val_metric_f1:
-  mean: 0.28201799679225
-  std: 0.18809574924719125
+  mean: 0.34349572191026273
+  std: 0.13894921655336245
 val_metric_precision:
-  mean: 0.3522013371554369
-  std: 0.18320035682319627
+  mean: 0.3984435541069106
+  std: 0.16832442469016798
 val_metric_recall:
-  mean: 0.33221194367663964
-  std: 0.1717797395362438
+  mean: 0.3911541183969469
+  std: 0.12985486441827035
 weight_decay1: 0.01
 weight_decay2: 0.0005

@@ -1,0 +1,63 @@
+best_trial: 10
+best_trial_save_dir: temp_result/
+dataset_args:
+  mat_path: data/Mfeat_v2.mat
+  topk: 10
+  train_ratio: 0.1
+device: cuda
+dfcallback_args:
+  df_save_path: ./tables/Mfeat_v2.csv
+earlystop_args:
+  checkpoint_dir: ./checkpoint/Mfeat_v2
+  monitor: val_metric_acc
+  patience: 100
+  restore_best_weights: true
+  save_best_only: true
+epochs: 1500
+executions_per_trial: 5
+loss_weights: None
+max_trials: 250
+metric_acc:
+  mean: 1.0
+  std: 0.0
+metric_f1:
+  mean: 1.0
+  std: 0.0
+metric_precision:
+  mean: 1.0
+  std: 0.0
+metric_recall:
+  mean: 1.0
+  std: 0.0
+model_args:
+  alpha: 0.1
+  dropout: 0.5
+  hid_dim: 96
+  lamda: 0.5
+  layerclass: GCNIILayer
+  nlayer: 4
+model_class_args:
+  class_name: GCNII_model
+  module_path: models.model
+optimizer_args:
+  lr: 0.01
+optimizer_class_args:
+  class_name: Adam
+  module_path: torch.optim
+quiet: false
+tbwriter_args:
+  log_dir: ./logs/Mfeat_v2
+val_metric_acc:
+  mean: 0.975055549
+  std: 0.0017647115982530987
+val_metric_f1:
+  mean: 0.9752044638302266
+  std: 0.0017108919986529752
+val_metric_precision:
+  mean: 0.9760449014261822
+  std: 0.0015131493626391705
+val_metric_recall:
+  mean: 0.975197907434516
+  std: 0.001764736292432829
+weight_decay1: 0.01
+weight_decay2: 0.0005

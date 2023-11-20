@@ -1,5 +1,5 @@
 best_trial: 10
-best_trial_save_dir: best/
+best_trial_save_dir: temp_result/
 dataset_args:
   mat_path: data/Mfeat.mat
   topk: 10
@@ -12,30 +12,30 @@ earlystop_args:
   monitor: val_metric_acc
   patience: 100
   restore_best_weights: true
-  save_best_only: false
+  save_best_only: true
 epochs: 1500
 executions_per_trial: 2
 loss_weights: None
 max_trials: 125
 metric_acc:
-  mean: 0.1585
-  std: 0.018980252896102306
+  mean: 0.155
+  std: 0.02626785107312739
 metric_f1:
-  mean: 0.11107787080716199
-  std: 0.02553192955067468
+  mean: 0.10707214401717949
+  std: 0.024236367248737657
 metric_precision:
-  mean: 0.15368521064743818
-  std: 0.022839852825841014
+  mean: 0.15203637687189225
+  std: 0.03845006084996954
 metric_recall:
-  mean: 0.15761204481792715
-  std: 0.02376420984543004
+  mean: 0.16492857142857137
+  std: 0.02850688145429861
 model_args:
   alpha: 0.1
   dropout: 0.5
-  hid_dim: 120
+  hid_dim: 96
   lamda: 0.5
   layerclass: GCNIILayer
-  nlayer: 54
+  nlayer: 34
 model_class_args:
   class_name: GCNII_model
   module_path: models.model
@@ -48,16 +48,16 @@ quiet: false
 tbwriter_args:
   log_dir: ./logs/Mfeat
 val_metric_acc:
-  mean: 0.141833334
-  std: 0.04401181912836214
+  mean: 0.1516666664
+  std: 0.05682276933839085
 val_metric_f1:
-  mean: 0.049390862984997876
-  std: 0.02582107778143266
+  mean: 0.06917986320641074
+  std: 0.0533564187420151
 val_metric_precision:
-  mean: 0.03214218243910762
-  std: 0.019062894131501775
+  mean: 0.09164241745352555
+  std: 0.06283216565033385
 val_metric_recall:
-  mean: 0.14067026895014806
-  std: 0.04465191039992275
+  mean: 0.15094916000881037
+  std: 0.057180698892382274
 weight_decay1: 0.01
 weight_decay2: 0.0005

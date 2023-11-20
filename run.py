@@ -284,10 +284,6 @@ if __name__ == '__main__':
 
         #根据parser_args修改conf
         #config yaml 第一层级
-        # first_deep_dict = {key:parser_args[key] for key in parser_args.keys()
-        #                    if key in ['max_trials','executions_per_trial',
-        #                     'best_trial','best_trial_save_dir','device','epochs','quiet']}
-        # args.update(first_deep_dict)
         for key in ['max_trials','executions_per_trial', 'best_trial','best_trial_save_dir','device','epochs','quiet']:
             args[key] =parser_args[key] if parser_args[key] is not None else args[key]
         #config yaml 第二层级
@@ -311,7 +307,7 @@ if __name__ == '__main__':
                 executions_per_trial=args['executions_per_trial'],
                 max_trials=args['max_trials'],
                 mode='max',
-                quiet=args['quiet'],
+                #quiet=args['quiet'],
             )
             tuner.search(args=args)
 
@@ -340,4 +336,3 @@ if __name__ == '__main__':
     print(compute_mean_metric_in_bestdir_for_all_dataset('temp_result'))
 
     #print(compute_mean_metric_in_bestdir_for_one_dataset('temp_result/MITIndoor',True))
-

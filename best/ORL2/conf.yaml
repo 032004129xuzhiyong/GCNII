@@ -2,7 +2,7 @@ best_trial: 10
 best_trial_save_dir: best/
 dataset_args:
   mat_path: data/ORL2.mat
-  topk: 10
+  topk: 4
   train_ratio: 0.1
 device: cuda
 dfcallback_args:
@@ -12,30 +12,30 @@ earlystop_args:
   monitor: val_metric_acc
   patience: 100
   restore_best_weights: true
-  save_best_only: false
+  save_best_only: true
 epochs: 1500
-executions_per_trial: 2
+executions_per_trial: 5
 loss_weights: None
-max_trials: 125
+max_trials: 250
 metric_acc:
-  mean: 0.0796759051
-  std: 0.015974643695176056
+  mean: 0.11500484200000001
+  std: 0.07198891420077856
 metric_f1:
-  mean: 0.03478429104336541
-  std: 0.010821904008504272
+  mean: 0.05707420509714702
+  std: 0.03569649428130912
 metric_precision:
-  mean: 0.03312355403853768
-  std: 0.010345463739483125
+  mean: 0.05559790852217196
+  std: 0.03314979747581055
 metric_recall:
-  mean: 0.06410256410256407
-  std: 0.01516943534128108
+  mean: 0.09294871794871791
+  std: 0.04655717643055754
 model_args:
   alpha: 0.1
   dropout: 0.5
-  hid_dim: 96
+  hid_dim: 216
   lamda: 0.5
   layerclass: GCNIILayer
-  nlayer: 6
+  nlayer: 8
 model_class_args:
   class_name: GCNII_model
   module_path: models.model
@@ -48,16 +48,16 @@ quiet: false
 tbwriter_args:
   log_dir: ./logs/ORL2
 val_metric_acc:
-  mean: 0.0405855691
-  std: 0.013937263171924123
+  mean: 0.06570101544999998
+  std: 0.02943206425188729
 val_metric_f1:
-  mean: 0.00811412571660287
-  std: 0.0070466064388559424
+  mean: 0.02693317650805176
+  std: 0.023235139294388772
 val_metric_precision:
-  mean: 0.011251970516344582
-  std: 0.011454227616071946
+  mean: 0.02549625163692303
+  std: 0.02239638931682799
 val_metric_recall:
-  mean: 0.042812499999999996
-  std: 0.01569048776329149
+  mean: 0.0682986111111111
+  std: 0.0320525984638849
 weight_decay1: 0.01
 weight_decay2: 0.0005

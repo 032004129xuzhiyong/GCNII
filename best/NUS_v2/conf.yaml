@@ -1,0 +1,63 @@
+best_trial: 10
+best_trial_save_dir: temp_result/
+dataset_args:
+  mat_path: data/NUS_v2.mat
+  topk: 80
+  train_ratio: 0.1
+device: cuda
+dfcallback_args:
+  df_save_path: ./tables/NUS_v2.csv
+earlystop_args:
+  checkpoint_dir: ./checkpoint/NUS_v2
+  monitor: val_metric_acc
+  patience: 100
+  restore_best_weights: true
+  save_best_only: true
+epochs: 1500
+executions_per_trial: 5
+loss_weights: None
+max_trials: 250
+metric_acc:
+  mean: 0.943749991
+  std: 0.006249994333345342
+metric_f1:
+  mean: 0.9437331033123156
+  std: 0.0063141945807154475
+metric_precision:
+  mean: 0.9471734325987364
+  std: 0.006301249818761701
+metric_recall:
+  mean: 0.9437896825396825
+  std: 0.006146223660690008
+model_args:
+  alpha: 0.1
+  dropout: 0.5
+  hid_dim: 104
+  lamda: 0.5
+  layerclass: GCNIILayer
+  nlayer: 4
+model_class_args:
+  class_name: GCNII_model
+  module_path: models.model
+optimizer_args:
+  lr: 0.01
+optimizer_class_args:
+  class_name: Adam
+  module_path: torch.optim
+quiet: false
+tbwriter_args:
+  log_dir: ./logs/NUS_v2
+val_metric_acc:
+  mean: 0.385370373
+  std: 0.004904791338352834
+val_metric_f1:
+  mean: 0.37855006113972295
+  std: 0.0033563129384284705
+val_metric_precision:
+  mean: 0.4107758325834777
+  std: 0.01398420075849295
+val_metric_recall:
+  mean: 0.3861475285401991
+  std: 0.004813380675780301
+weight_decay1: 0.01
+weight_decay2: 0.0005
