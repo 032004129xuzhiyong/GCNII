@@ -1,0 +1,63 @@
+best_trial: 10
+best_trial_save_dir: temp_result/
+dataset_args:
+  mat_path: data/YaleB_Extended.mat
+  topk: 150
+  train_ratio: 0.1
+device: cuda
+dfcallback_args:
+  df_save_path: ./tables/YaleB_Extended.csv
+earlystop_args:
+  checkpoint_dir: ./checkpoint/YaleB_Extended
+  monitor: val_metric_acc
+  patience: 100
+  restore_best_weights: true
+  save_best_only: true
+epochs: 1500
+executions_per_trial: 5
+loss_weights: None
+max_trials: 250
+metric_acc:
+  mean: 0.0392561987
+  std: 0.007449486430211321
+metric_f1:
+  mean: 0.02405624119949389
+  std: 0.007790025485092782
+metric_precision:
+  mean: 0.02921100423068614
+  std: 0.014261742259024846
+metric_recall:
+  mean: 0.03815789473684209
+  std: 0.006109906111800799
+model_args:
+  alpha: 0.1
+  dropout: 0.5
+  hid_dim: 128
+  lamda: 0.5
+  layerclass: GCNIILayer
+  nlayer: 2
+model_class_args:
+  class_name: GCNII_model
+  module_path: models.model
+optimizer_args:
+  lr: 0.01
+optimizer_class_args:
+  class_name: Adam
+  module_path: torch.optim
+quiet: true
+tbwriter_args:
+  log_dir: ./logs/YaleB_Extended
+val_metric_acc:
+  mean: 0.0288725943
+  std: 0.0019658667721517676
+val_metric_f1:
+  mean: 0.0048731543765571
+  std: 0.0016408321949649303
+val_metric_precision:
+  mean: 0.00428999309028646
+  std: 0.004565583164011732
+val_metric_recall:
+  mean: 0.02893551535316321
+  std: 0.0019198635791079892
+weight_decay1: 0.01
+weight_decay2: 0.0005

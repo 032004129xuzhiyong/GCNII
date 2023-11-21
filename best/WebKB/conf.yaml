@@ -1,0 +1,63 @@
+best_trial: 10
+best_trial_save_dir: temp_result/
+dataset_args:
+  mat_path: data/WebKB.mat
+  topk: 10
+  train_ratio: 0.1
+device: cuda
+dfcallback_args:
+  df_save_path: ./tables/WebKB.csv
+earlystop_args:
+  checkpoint_dir: ./checkpoint/WebKB
+  monitor: val_metric_acc
+  patience: 100
+  restore_best_weights: true
+  save_best_only: true
+epochs: 1500
+executions_per_trial: 5
+loss_weights: None
+max_trials: 250
+metric_acc:
+  mean: 1.0
+  std: 0.0
+metric_f1:
+  mean: 1.0
+  std: 0.0
+metric_precision:
+  mean: 1.0
+  std: 0.0
+metric_recall:
+  mean: 1.0
+  std: 0.0
+model_args:
+  alpha: 0.1
+  dropout: 0.5
+  hid_dim: 128
+  lamda: 0.5
+  layerclass: GCNIILayer
+  nlayer: 34
+model_class_args:
+  class_name: GCNII_model
+  module_path: models.model
+optimizer_args:
+  lr: 0.01
+optimizer_class_args:
+  class_name: Adam
+  module_path: torch.optim
+quiet: true
+tbwriter_args:
+  log_dir: ./logs/WebKB
+val_metric_acc:
+  mean: 0.8546447899999998
+  std: 0.011252066985087683
+val_metric_f1:
+  mean: 0.5527179043783788
+  std: 0.03306925527571916
+val_metric_precision:
+  mean: 0.659279198546176
+  std: 0.035901047328412546
+val_metric_recall:
+  mean: 0.6265494414979106
+  std: 0.029910370489474356
+weight_decay1: 0.01
+weight_decay2: 0.0005
