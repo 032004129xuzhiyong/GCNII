@@ -71,11 +71,11 @@ def train_one_args(args,data=None):
                                                 bind_boolind_for_fn(mmetric.precision,train_bool,val_bool),
                                                 bind_boolind_for_fn(mmetric.recall,train_bool,val_bool)
                                                 ],
+                                     'loss_weights':None,
                                      # 'scheduler':scheduler,
                                      },
                          device=device,
                          val_dataload=dataload,
-                         loss_weights=None,
                          callbacks=[
                              mtorch.DfSaveCallback(**args['dfcallback_args']),
                              #mtorch.TbWriterCallback(**args['tbwriter_args']),
